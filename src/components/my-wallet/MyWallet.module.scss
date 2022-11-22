@@ -5,6 +5,7 @@
   width: 90%;
   margin: 0 auto;
   padding: 0;
+  border-radius: 0 0 10px 10px;
 
   .list-group-item {
     padding: 1.4vw 3vw;
@@ -62,12 +63,23 @@
 
 @include media-breakpoint-down(sm) {
   .container {
+    font-size: 0.7em;
+    .list-group-item {
+      .btn {
+        font-size: 0.8em;
+      }
+    }
   }
 }
 
 @include media-breakpoint-down(xs) {
   .container {
     width: 100%;
+    .list-group-item {
+      .list-group-item-name {
+        width: 50%;
+      }
+    }
   }
 }
 

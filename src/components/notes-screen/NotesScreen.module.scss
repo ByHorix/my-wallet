@@ -5,6 +5,9 @@
   width: 90vw;
   margin: 0 auto;
   padding: 3vw;
+  .d-flex {
+    align-items: center;
+  }
 
   .total {
     margin: 0;
@@ -28,17 +31,43 @@
 @include media-breakpoint-down(md) {
   .container {
     width: 95%;
+    .without-notes {
+      font-size: 0.8em;
+    }
+    .list-group-item {
+      font-size: 0.9em;
+    }
   }
 }
 
 @include media-breakpoint-down(sm) {
   .container {
-    max-width: 540px;
+    .total {
+      font-size: 1em;
+    }
+    .list-group-item {
+      font-size: 0.7em;
+      padding: 1vw;
+    }
   }
 }
 
 @include media-breakpoint-down(xs) {
   .container {
     width: 100%;
+    padding: 2vw;
+    .d-flex {
+      flex-direction: column;
+      align-items: start;
+    }
+    .total {
+      font-size: 0.8em;
+    }
+    .without-notes {
+      font-size: 0.6em;
+    }
+    .list-group-item {
+      font-size: 0.6em;
+    }
   }
 }

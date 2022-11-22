@@ -15,10 +15,10 @@ export const NotesScreen = ({ name }) => {
 
   const notesScreenClasses = createClassNames(styles.container, 'border', 'border-1', 'rounded-bottom');
   const liClasses = createClassNames(styles['list-group-item'], 'list-group-item', 'd-flex', 'justify-content-between');
-  const titleClasses = createClassNames('d-flex', 'justify-content-between', 'align-items-center');
+  const titleClasses = createClassNames(styles['d-flex'], 'd-flex', 'justify-content-between');
 
   const notesList = notesLists[name].length === 0
-      ? 'Записей пока что нет...'
+      ? <div className={styles['without-notes']}>Записей пока что нет...</div>
       : <ul className="list-group list-group-flush">
         {notesLists[name].map(({ id, amount, description, date }) => (
             <li

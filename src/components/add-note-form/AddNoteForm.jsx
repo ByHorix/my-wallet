@@ -57,6 +57,7 @@ export const AddNoteForm = ({ name }) => {
   const disabledClasses = createClassNames(styles.disabled, 'disabled');
   const btnSubmitClasses = createClassNames(btnClasses, 'btn-primary', { [disabledClasses]: formState.amount === '' || formState.description === '' });
   const cancelBtnClasses = createClassNames(btnClasses, 'btn-danger');
+  const inputClasses = createClassNames(styles['form-control'], 'form-control');
 
   if (!isAddingNote) {
     return (
@@ -74,7 +75,7 @@ export const AddNoteForm = ({ name }) => {
           <input
               onChange={onChangeHandler}
               type="number"
-              className="form-control"
+              className={inputClasses}
               name="amount"
               value={formState.amount}
               placeholder="Сумма"
@@ -84,7 +85,7 @@ export const AddNoteForm = ({ name }) => {
           <input
               onChange={onChangeHandler}
               type="text"
-              className="form-control"
+              className={inputClasses}
               name="description"
               value={formState.description}
               placeholder="Описание"
