@@ -1,0 +1,74 @@
+@import "src/global/_variables.scss";
+@import "src/global/mixins/_breakpoint";
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0;
+
+  .list-group-item {
+    padding: 1.4vw 3vw;
+
+    //.btn {
+    //  font-size: 1em;
+    //}
+
+    .list-group-item-name {
+      display: block;
+      width: 75%;
+      font-weight: 600;
+      margin-left: 2vw;
+      padding-left: 2vw;
+      border-right: 0.1em solid;
+      border-left: 0.1em solid;
+    }
+
+    .badge {
+      margin-left: 20px;
+      background-color: $secondary-bg-color;
+    }
+  }
+}
+
+//responsive
+
+@include media-breakpoint-down(lg) {
+  .container {
+    .list-group-item {
+      padding: 1vw 2vw;
+      .list-group-item-name {
+        width: 70%;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .container {
+    width: 95%;
+    font-size: 0.9em;
+
+    .list-group-item {
+      .btn {
+        padding: 0.2em 0.5em;
+        font-size: 0.9em;
+      }
+      .list-group-item-name {
+        width: 65%;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .container {
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .container {
+    width: 100%;
+  }
+}
+
+

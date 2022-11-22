@@ -1,0 +1,44 @@
+@import "src/global/_variables";
+@import "src/global/mixins/_breakpoint";
+
+.container {
+  width: 90vw;
+  margin: 0 auto;
+  padding: 3vw;
+
+  .total {
+    margin: 0;
+  }
+
+  .list-group-item {
+    padding: 1.4vw;
+  }
+}
+
+//responsive
+
+@include media-breakpoint-down(lg) {
+  .container {
+    .total {
+      font-size: 1.2em;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .container {
+    width: 95%;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .container {
+    width: 100%;
+  }
+}

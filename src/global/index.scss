@@ -1,0 +1,26 @@
+@import 'variables';
+@import 'mixins/breakpoint';
+
+@include media-breakpoint-down(lg) {
+  .container {
+    max-width: 1080px;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .container {
+    width: 100%;
+  }
+}

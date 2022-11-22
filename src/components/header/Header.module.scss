@@ -1,0 +1,105 @@
+@import '/src/global/_variables';
+@import '/src/global/mixins/_breakpoint';
+
+.header {
+  width: 90%;
+  max-height: border-box;
+  background-color: $main-bg-color;
+  margin: 10px auto 0;
+  padding-top: 2vw;
+  border-radius: 20px 50px 0 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding: 0 2vw;
+
+  .nav-tabs {
+    width: 60%;
+    align-items: stretch;
+    border-bottom: none;
+  }
+
+  .balance {
+    font-size: 0.9em;
+    width: 40%;
+    display: flex;
+    justify-content: right;
+    font-weight: 600;
+    color: $disabled-color;
+    .balance-item {
+      text-align: right;
+      padding: 0 2vw
+    }
+  }
+}
+
+.nav-tabs {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 50px;
+}
+
+//responsive
+
+@include media-breakpoint-down(lg) {
+  .header {
+    .nav-tabs {
+      max-width: 50%;
+    }
+    .balance {
+      width: auto;
+      padding: 5px 3vw 0;
+    }
+  }
+
+}
+
+@include media-breakpoint-down(md) {
+  .header {
+    padding-top: 1.5vw;
+    width: 95%;
+    .nav {
+      padding: 0 2vw;
+      font-size: 0.9em;
+      //align-items: stretch;
+
+      .balance {
+        width: auto;
+        padding: 5px 3vw;
+        .balance-item {
+          padding: 0 1vw 0;
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .header {
+    .nav {
+      align-items: start;
+      justify-content: space-between;
+      .nav-tabs {
+        width: 60%;
+      }
+      .balance {
+        margin-top: -7px;
+        font-size: 0.7em;
+        flex-direction: column-reverse;
+        width: 30%;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .container {
+    width: 100%;
+  }
+}
+
+
+

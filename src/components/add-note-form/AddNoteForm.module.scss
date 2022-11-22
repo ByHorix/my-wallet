@@ -1,0 +1,53 @@
+@import "src/global/_variables";
+@import "src/global/mixins/_breakpoint";
+
+.d-flex {
+  padding: 0;
+  margin: 0;
+  justify-content: right;
+
+  .form-input {
+    margin: 0 0.5vw;
+  }
+
+  .btn {
+    margin: 0 0.5vw;
+  }
+
+  .disabled {
+    font-weight: 400;
+    margin: 0 0.5vw;
+  }
+}
+
+
+//responsive
+
+@include media-breakpoint-down(lg) {
+  .d-flex {
+    .form-input, .btn {
+      font-size: 0.95em;
+    }
+    width: 50%
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .d-flex {
+    .form-input, .btn {
+      font-size: 0.9em;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .container {
+    width: 100%;
+  }
+}

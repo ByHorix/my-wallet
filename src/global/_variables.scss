@@ -1,0 +1,13 @@
+$main-bg-color: #ffcd4c;
+$main-color: #282f42;
+$disabled-color: #535357;
+$secondary-bg-color: #0090ff;
+$secondary-color: #ced4f8;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1080px,
+  xl: 1401px,
+) !default;

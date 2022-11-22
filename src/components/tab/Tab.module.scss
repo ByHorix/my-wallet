@@ -1,0 +1,58 @@
+@import "src/global/_variables";
+@import '/src/global/mixins/_breakpoint';
+
+.nav-item {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 50px;
+
+  .nav-link {
+    color: $main-color;
+    font-weight: 600;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 50px;
+    transition: ease all 0.4s;
+
+    .active {
+      border-radius: 15px 40px 0 0;
+    }
+  }
+}
+
+.nav-link:hover, .nav-link:focus {
+  color: #353b4e;
+  border-radius: 20px 45px 0 0;
+  background-color: rgba(255, 255, 255, 0.63);
+}
+
+//responsive
+
+@include media-breakpoint-down(lg) {
+  .nav-item {
+    box-sizing: content-box;
+    .nav-link {
+      padding: 5px 2vw 5px 1vw;
+    }
+  }
+
+}
+
+@include media-breakpoint-down(md) {
+  .nav-item {
+    .nav-link {
+      //font-size: 0.9em;
+    }
+  }
+
+}
+
+@include media-breakpoint-down(sm) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .container {
+    width: 100%;
+  }
+}
