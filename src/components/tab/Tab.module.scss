@@ -2,8 +2,8 @@
 @import '/src/global/mixins/_breakpoint';
 
 .nav-item {
-  border-top-left-radius: 25px;
-  border-top-right-radius: 50px;
+  //border-top-left-radius: 25px;
+  //border-top-right-radius: 50px;
 
   .nav-link {
     color: $main-color;
@@ -29,6 +29,7 @@
 @include media-breakpoint-down(lg) {
   .nav-item {
     box-sizing: content-box;
+
     .nav-link {
       padding: 5px 2vw 5px 1vw;
     }
@@ -46,13 +47,18 @@
 }
 
 @include media-breakpoint-down(sm) {
-  .container {
-    max-width: 540px;
+  .nav-item {
+    .nav-link {
+      padding: 2px 1vw 2px 0.5vw;
+    }
   }
 }
 
 @include media-breakpoint-down(xs) {
-  .container {
-    width: 100%;
+  .nav-item {
+    .nav-link {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
   }
 }

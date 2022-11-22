@@ -46,10 +46,10 @@
 @include media-breakpoint-down(lg) {
   .header {
     .nav-tabs {
-      max-width: 50%;
+      width: 50%;
     }
     .balance {
-      width: auto;
+      width: 50%;
       padding: 5px 3vw 0;
     }
   }
@@ -82,12 +82,13 @@
     .nav {
       align-items: start;
       justify-content: space-between;
+      font-size: 0.7em;
       .nav-tabs {
-        width: 60%;
+        width: 70%;
       }
       .balance {
         margin-top: -7px;
-        font-size: 0.7em;
+        font-size: 0.6em;
         flex-direction: column-reverse;
         width: 30%;
       }
@@ -96,8 +97,21 @@
 }
 
 @include media-breakpoint-down(xs) {
-  .container {
+  .header {
+    border-radius: 10px 10px 0 0;
     width: 100%;
+    .nav {
+      font-size: 0.6em;
+      .nav-tabs {
+        width: auto;
+      }
+      .balance {
+        margin-top: -7px;
+        font-size: 0.6em;
+        flex-direction: column-reverse;
+        width: auto;
+      }
+    }
   }
 }
 
