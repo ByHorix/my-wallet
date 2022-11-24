@@ -1,0 +1,44 @@
+@import "src/global/_variables";
+
+.menu-head {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: $disabled-color 1px solid;
+  .icon-container {
+    padding: 15px 20px;
+    .icon {
+      width: 40px;
+    }
+  }
+  .balance {
+    font-weight: 600;
+    color: $disabled-color;
+    margin: 0;
+    padding: 1.5vw 5vw;
+    .balance-item {
+      font-size: 18px;
+      text-align: right;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+.menu-body {
+  .menu {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    .menu-item {
+      font-size: 24px;
+      font-weight: 600;
+      color: $main-color;
+      //height: 6vh;
+      padding: 2vw;
+      border-bottom: $disabled-color 1px solid;
+    }
+    .active {
+      background-color: #ffe693;
+    }
+  }
+}

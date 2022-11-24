@@ -14,6 +14,15 @@
   }
 
   .list-group-item {
+    .amount {
+      width: 25%;
+    }
+    .description {
+      width: 50%;
+    }
+    .date {
+      width: 25%;
+    }
     padding: 1.4vw;
   }
 }
@@ -58,16 +67,24 @@
     padding: 2vw;
     .d-flex {
       flex-direction: column;
-      align-items: start;
+      align-items: center;
     }
     .total {
-      font-size: 0.8em;
+      text-align: center;
+      font-size: 26px;
     }
     .without-notes {
-      font-size: 0.6em;
+      text-align: center;
+      font-size: 24px;
     }
     .list-group-item {
-      font-size: 0.6em;
+      font-size: 20px;
+      .description {
+        width: 40%;
+      }
+      .amount, .date {
+        width: 30%;
+      }
     }
   }
 }

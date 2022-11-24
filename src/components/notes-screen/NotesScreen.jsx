@@ -25,9 +25,9 @@ export const NotesScreen = ({ name }) => {
                 key={id}
                 className={liClasses}
             >
-              <div className="w-25">| {amount}</div>
-              <div className="w-50">| {description}</div>
-              <div className="w-25">{date}</div>
+              <div className={styles.amount}>| {amount}</div>
+              <div className={styles.description}>| {description}</div>
+              <div className={styles.date}>{date}</div>
             </li>
         ))}
       </ul>;

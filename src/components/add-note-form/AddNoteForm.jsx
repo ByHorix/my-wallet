@@ -62,7 +62,12 @@ export const AddNoteForm = ({ name }) => {
   if (!isAddingNote) {
     return (
         <div className={formClasses}>
-          <button onClick={() => setIsAddingNote(true)} type="button" className={addNoteBtnClasses}>
+          <button
+              onClick={() => setIsAddingNote(true)}
+              onTouchStart={() => setIsAddingNote(true)}
+              type="button"
+              className={addNoteBtnClasses}
+          >
             Добавить запись
           </button>
         </div>
@@ -91,12 +96,15 @@ export const AddNoteForm = ({ name }) => {
               placeholder="Описание"
           />
         </div>
-        <div className="">
           <button type="submit" className={btnSubmitClasses}>Добавить</button>
-        </div>
-        <div className="">
-          <button onClick={() => setIsAddingNote(false)} type="button" className={cancelBtnClasses}>Отмена</button>
-        </div>
+          <button
+              onTouchStart={() => setIsAddingNote(true)}
+              onClick={() => setIsAddingNote(false)}
+              type="button"
+              className={cancelBtnClasses}
+          >
+            Отмена
+          </button>
       </form>
   );
 };

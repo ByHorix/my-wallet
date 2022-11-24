@@ -4,6 +4,7 @@ import { GlobalContext } from '../GlobalContext';
 import { HeaderItems } from '../../config';
 import styles from './Header.module.scss';
 import createClassNames from '../../createClassNames';
+import { BurgerMenu } from '../burger-menu/BurgerMenu';
 
 
 // 'MyWallet',+
@@ -17,10 +18,14 @@ export const Header = () => {
   const navClasses = createClassNames(styles.nav, 'nav nav-fill');
   const ulClasses = createClassNames(styles['nav-tabs'], 'nav nav-tabs');
   const balanceClasses = createClassNames('nav-item', 'nav-link', styles.balance);
+  const burgerMenuClasses = createClassNames(styles['burger-menu']);
 
 
   return (
       <header className={styles.header}>
+        <div className={burgerMenuClasses}>
+          <BurgerMenu/>
+        </div>
         <nav className={navClasses}>
           <ul className={ulClasses}>
             {HeaderItems.map(({ name, route }) => (
