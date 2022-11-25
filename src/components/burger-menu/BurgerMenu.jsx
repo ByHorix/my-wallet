@@ -21,7 +21,7 @@ export const BurgerMenu = () => {
   };
 
   const menuOpenHandler = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((isOpen) => !isOpen);
   };
 
   return (
