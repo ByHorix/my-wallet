@@ -8,7 +8,7 @@
   margin: 10px auto 0;
   padding-top: 2vw;
   border-radius: 20px 50px 0 0;
-  .burger-menu {
+  .burgerMenu {
     display: none;
   }
 }
@@ -19,7 +19,7 @@
   align-items: start;
   padding: 0 2vw;
 
-  .nav-tabs {
+  .navTabs {
     width: 60%;
     align-items: stretch;
     border-bottom: none;
@@ -32,14 +32,14 @@
     justify-content: right;
     font-weight: 600;
     color: $disabled-color;
-    .balance-item {
+    .balanceItem {
       text-align: right;
       padding: 0 2vw
     }
   }
 }
 
-.nav-tabs {
+.navTabs {
   border-top-left-radius: 25px;
   border-top-right-radius: 50px;
 }
@@ -48,7 +48,7 @@
 
 @include media-breakpoint-down(lg) {
   .header {
-    .nav-tabs {
+    .navTabs {
       width: 50%;
     }
     .balance {
@@ -71,7 +71,7 @@
       .balance {
         width: auto;
         padding: 5px 3vw;
-        .balance-item {
+        .balanceItem {
           padding: 0 1vw 0;
           font-size: 0.9em;
         }
@@ -86,7 +86,7 @@
       align-items: start;
       justify-content: space-between;
       font-size: 0.7em;
-      .nav-tabs {
+      .navTabs {
         width: 70%;
       }
       .balance {
@@ -105,7 +105,7 @@
     width: 100%;
     padding: 0;
     margin: 0;
-    .burger-menu {
+    .burgerMenu {
       display: block;
     }
     .nav {

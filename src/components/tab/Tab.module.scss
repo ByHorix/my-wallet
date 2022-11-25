@@ -1,11 +1,11 @@
 @import "src/global/_variables";
 @import '/src/global/mixins/_breakpoint';
 
-.nav-item {
+.navItem {
   //border-top-left-radius: 25px;
   //border-top-right-radius: 50px;
 
-  .nav-link {
+  .navLink {
     color: $main-color;
     font-weight: 600;
     border-top-left-radius: 25px;
@@ -18,7 +18,7 @@
   }
 }
 
-.nav-link:hover, .nav-link:focus {
+.navLink:hover, .navLink:focus {
   color: #353b4e;
   border-radius: 20px 45px 0 0;
   background-color: rgba(255, 255, 255, 0.63);
@@ -27,10 +27,10 @@
 //responsive
 
 @include media-breakpoint-down(lg) {
-  .nav-item {
+  .navItem {
     box-sizing: content-box;
 
-    .nav-link {
+    .navLink {
       padding: 5px 2vw 5px 1vw;
     }
   }
@@ -38,8 +38,8 @@
 }
 
 @include media-breakpoint-down(md) {
-  .nav-item {
-    .nav-link {
+  .navItem {
+    .navLink {
       //font-size: 0.9em;
     }
   }
@@ -47,16 +47,16 @@
 }
 
 @include media-breakpoint-down(sm) {
-  .nav-item {
-    .nav-link {
+  .navItem {
+    .navLink {
       padding: 2px 1vw 2px 0.5vw;
     }
   }
 }
 
 @include media-breakpoint-down(xs) {
-  .nav-item {
-    .nav-link {
+  .navItem {
+    .navLink {
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
     }

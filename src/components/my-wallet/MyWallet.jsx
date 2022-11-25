@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../GlobalContext';
 import { useNavigate } from 'react-router-dom';
 import styles from './MyWallet.module.scss';
-import createClassNames from '../../createClassNames';
+import cn from '../../createClassNames';
 
 export const MyWallet = () => {
   const { amounts } = useContext(GlobalContext);
@@ -16,10 +16,10 @@ export const MyWallet = () => {
         accumulations
     } = amounts;
 
-  const liClasses = createClassNames(styles['list-group-item'], 'list-group-item', 'd-flex', 'justify-content-left', 'align-items-center');
-  const liNameClasses = createClassNames(styles['list-group-item-name'], 'list-group-item-name');
-  const amountClasses = createClassNames(styles.badge, 'badge', 'rounded-pill');
-  const btnClasses = createClassNames(styles.btn, 'btn', 'btn-outline-warning');
+  const liClasses = cn(styles.listGroupItem, 'list-group-item', 'd-flex', 'justify-content-left', 'align-items-center');
+  const liNameClasses = cn(styles.listGroupItemName, 'list-group-item-name');
+  const amountClasses = cn(styles.badge, 'badge', 'rounded-pill');
+  const btnClasses = cn(styles.btn, 'btn', 'btn-outline-warning');
 
     return (
             <div className={styles.container}>

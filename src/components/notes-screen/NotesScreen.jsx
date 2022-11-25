@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AddNoteForm } from '../add-note-form/AddNoteForm';
 import { GlobalContext } from '../GlobalContext';
 import styles from './NotesScreen.module.scss';
-import createClassNames from '../../createClassNames';
+import cn from '../../createClassNames';
 
 export const NotesScreen = ({ name }) => {
 
@@ -13,12 +13,12 @@ export const NotesScreen = ({ name }) => {
 
   const currentState = amounts[name];
 
-  const notesScreenClasses = createClassNames(styles.container, 'border', 'border-1', 'rounded-bottom');
-  const liClasses = createClassNames(styles['list-group-item'], 'list-group-item', 'd-flex', 'justify-content-between');
-  const titleClasses = createClassNames(styles['d-flex'], 'd-flex', 'justify-content-between');
+  const notesScreenClasses = cn(styles.container, 'border', 'border-1', 'rounded-bottom');
+  const liClasses = cn(styles.listGroupItem, 'list-group-item', 'd-flex', 'justify-content-between');
+  const titleClasses = cn(styles.screenTitle, 'd-flex', 'justify-content-between');
 
   const notesList = notesLists[name].length === 0
-      ? <div className={styles['without-notes']}>Записей пока что нет...</div>
+      ? <div className={styles.withoutNotes}>Записей пока что нет...</div>
       : <ul className="list-group list-group-flush">
         {notesLists[name].map(({ id, amount, description, date }) => (
             <li

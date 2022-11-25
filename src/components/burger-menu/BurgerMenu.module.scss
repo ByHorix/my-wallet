@@ -1,10 +1,10 @@
 @import "src/global/_variables";
 
-.menu-head {
+.menuHead {
   display: flex;
   justify-content: space-between;
   border-bottom: $disabled-color 1px solid;
-  .icon-container {
+  .iconContainer {
     padding: 15px 20px;
     .icon {
       width: 40px;
@@ -15,7 +15,7 @@
     color: $disabled-color;
     margin: 0;
     padding: 1.5vw 5vw;
-    .balance-item {
+    .balanceItem {
       font-size: 18px;
       text-align: right;
       margin: 0;
@@ -24,16 +24,15 @@
   }
 }
 
-.menu-body {
+.menuBody {
   .menu {
     padding: 0;
     list-style: none;
     text-align: center;
-    .menu-item {
+    .menuItem {
       font-size: 24px;
       font-weight: 600;
       color: $main-color;
-      //height: 6vh;
       padding: 2vw;
       border-bottom: $disabled-color 1px solid;
     }
