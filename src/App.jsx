@@ -2,7 +2,7 @@ import React from 'react';
 import { MyWallet } from './components/my-wallet/MyWallet';
 import { NotesScreen } from './components/notes-screen/NotesScreen';
 import { GlobalContextProvider } from './components/GlobalContextProvider';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { MainLayout } from './components/MainLayout';
 import { AppRoutes } from './config';
@@ -13,9 +13,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="*" element={(
-              <MainLayout>
-                <MyWallet/>
-              </MainLayout>
+              <Navigate replace to={AppRoutes.MY_WALLET} />
           )}/>
           <Route path={AppRoutes.MY_WALLET} element={(
               <MainLayout>

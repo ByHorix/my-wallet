@@ -6,17 +6,15 @@ import { AppRoutes } from '../../config';
 
 export const Tab = ({ route, name }) => {
   const location = useLocation();
-  const pathName = location.pathname === '/' ? AppRoutes.MY_WALLET : location.pathname;
+  const isTabActive = location === route;
   const activeClasses = `active ${styles.active}`;
 
   const liClasses = cn(styles.navItem, 'nav-item');
-  const linkClasses = cn({ [activeClasses]: pathName === route }, styles.navLink, 'nav-link');
-  console.log(linkClasses)
 
     return (
         <li className={liClasses}>
             <Link
-                className={linkClasses}
+                className={cn({ [activeClasses]: isTabActive }, styles.navLink, 'nav-link')}
                 to={route}
             >
                 {name}

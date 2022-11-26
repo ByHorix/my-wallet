@@ -13,20 +13,19 @@ export const BurgerMenu = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const pathName = location.pathname === '/' ? AppRoutes.MY_WALLET : location.pathname;
 
-  const menuItemHandler = (route) => {
+  const handleNavigate = (route) => {
     navigate(route);
     setIsOpen(false);
   };
 
-  const menuOpenHandler = () => {
+  const handleOpenMenu = () => {
     setIsOpen((isOpen) => !isOpen);
   };
 
   return (
       <div>
-        <div className={styles.menuHead} onTouchEnd={menuOpenHandler}>
+        <div className={styles.menuHead} onTouchEnd={handleOpenMenu}>
           <div className={styles.iconContainer}>
             <img className={styles.icon} src={isOpen ? closeMenuIcon : burgerMenuIcon} alt=""/>
           </div>
@@ -46,8 +45,8 @@ export const BurgerMenu = () => {
                     {HeaderItems.map(({ route, name }) => (
                         <li
                             key={name}
-                            className={cn(styles.menuItem, { [styles.active]: pathName === route })}
-                            onTouchEnd={() => menuItemHandler(route)}
+                            className={cn(styles.menuItem, { [styles.active]: location.pathname === route })}
+                            onTouchEnd={() => handleNavigate(route)}
                         >
                           {name}
                         </li>
