@@ -2,11 +2,10 @@ import React from "react";
 import cn from "../../createClassNames";
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Tab.module.scss';
-import { AppRoutes } from '../../config';
 
 export const Tab = ({ route, name }) => {
   const location = useLocation();
-  const isTabActive = location === route;
+  const isTabActive = location.pathname === route;
   const activeClasses = `active ${styles.active}`;
 
   const liClasses = cn(styles.navItem, 'nav-item');

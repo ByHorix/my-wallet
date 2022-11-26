@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../GlobalContext';
-import { AppRoutes, HeaderItems } from '../../config';
+import { HeaderItems } from '../../config';
 import styles from './BurgerMenu.module.scss';
 import burgerMenuIcon from '../../menu-icon/menu-icon.svg';
 import closeMenuIcon from '../../menu-icon/close-menu-icon.svg';
