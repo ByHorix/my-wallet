@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const AppRoutes = {
   MY_WALLET: '/my-wallet',
   EARNS: '/earns',

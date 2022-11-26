@@ -5,15 +5,16 @@
   width: 90%;
   margin: 0 auto;
   padding: 0;
+  border-radius: 0 0 10px 10px;
 
-  .list-group-item {
+  .listGroupItem {
     padding: 1.4vw 3vw;
 
-    //.btn {
-    //  font-size: 1em;
-    //}
+    .btn {
+      font-size: 1em;
+    }
 
-    .list-group-item-name {
+    .listGroupItemName {
       display: block;
       width: 75%;
       font-weight: 600;
@@ -34,9 +35,9 @@
 
 @include media-breakpoint-down(lg) {
   .container {
-    .list-group-item {
+    .listGroupItem {
       padding: 1vw 2vw;
-      .list-group-item-name {
+      .listGroupItemName {
         width: 70%;
       }
     }
@@ -48,12 +49,12 @@
     width: 95%;
     font-size: 0.9em;
 
-    .list-group-item {
+    .listGroupItem {
       .btn {
         padding: 0.2em 0.5em;
         font-size: 0.9em;
       }
-      .list-group-item-name {
+      .listGroupItemName {
         width: 65%;
       }
     }
@@ -62,12 +63,27 @@
 
 @include media-breakpoint-down(sm) {
   .container {
+    font-size: 0.7em;
+    .listGroupItem {
+      .btn {
+        font-size: 0.8em;
+      }
+    }
   }
 }
 
 @include media-breakpoint-down(xs) {
   .container {
     width: 100%;
+    .listGroupItem {
+      font-size: 24px;
+      .btn {
+        display: none;
+      }
+      .listGroupItemName {
+        width: 50%;
+      }
+    }
   }
 }
 

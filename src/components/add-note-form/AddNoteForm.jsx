@@ -1,9 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
-import createClassNames from '../../createClassNames';
+import cn from '../../createClassNames';
 import validateValues from '../../validateValues';
 import { GlobalContext } from '../GlobalContext';
 import { useLocation } from 'react-router-dom';
 import styles from './AddNoteForm.module.scss';
+import { v1 } from 'uuid';
 
 export const AddNoteForm = ({ name }) => {
   const [isAddingNote, setIsAddingNote] = useState(false);
@@ -23,22 +24,22 @@ export const AddNoteForm = ({ name }) => {
   } = useContext(GlobalContext);
 
   const [formState, setFormState] = useState({ amount: '', description: '' });
+  const isDisabledSubmitBtn = formState.amount === '' || formState.description === '';
 
-  const onChangeHandler = (e) => {
+  const handleInputChange = (e) => {
     e.preventDefault();
     const { target: { value, name } } = e;
     setFormState({ ...formState, [name]: value });
   };
 
-  const addingNoteFormHandler = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const isValid = validateValues(formState.amount !== '', formState.description !== '');
 
     if (isValid) {
       const currentHistoryState = notesLists[name];
-      // const currentAmountState = amountsState[activeTabState];
       const date = `${(new Date()).toLocaleDateString('ru-RU')} | ${(new Date()).toLocaleTimeString('ru-RU')}`;
-      const newId = currentHistoryState.length;
+      const newId = v1();
 
       const newNoteItem = { id: newId, amount: formState.amount, description: formState.description, date };
       const newCurrentHistoryState = [newNoteItem, ...currentHistoryState];
@@ -51,17 +52,19 @@ export const AddNoteForm = ({ name }) => {
     }
   };
 
-  const formClasses = createClassNames(styles['d-flex'], 'd-flex');
-  const btnClasses = createClassNames(styles.btn, 'btn');
-  const addNoteBtnClasses = createClassNames(btnClasses, 'btn-primary');
-  const disabledClasses = createClassNames(styles.disabled, 'disabled');
-  const btnSubmitClasses = createClassNames(btnClasses, 'btn-primary', { [disabledClasses]: formState.amount === '' || formState.description === '' });
-  const cancelBtnClasses = createClassNames(btnClasses, 'btn-danger');
+  const handleCloseForm = () => {
+    setIsAddingNote(false);
+  };
 
   if (!isAddingNote) {
     return (
-        <div className={formClasses}>
-          <button onClick={() => setIsAddingNote(true)} type="button" className={addNoteBtnClasses}>
+        <div className={cn(styles.formContainer, 'd-flex')}>
+          <button
+              onClick={() => setIsAddingNote(true)}
+              onTouchStart={() => setIsAddingNote(true)}
+              type="button"
+              className={cn(styles.btn, 'btn', 'btn-primary')}
+          >
             Добавить запись
           </button>
         </div>
@@ -69,33 +72,49 @@ export const AddNoteForm = ({ name }) => {
   }
 
   return (
-      <form onSubmit={addingNoteFormHandler} className={formClasses}>
-        <div className={styles['form-input']}>
+      <form onSubmit={handleSubmit} className={cn(styles.formContainer, 'd-flex')}>
+        <div className={styles.formInput}>
           <input
-              onChange={onChangeHandler}
+              onChange={handleInputChange}
               type="number"
-              className="form-control"
+              className={cn(styles.formControl, 'form-control')}
               name="amount"
               value={formState.amount}
               placeholder="Сумма"
           />
         </div>
-        <div className={styles['form-input']}>
+        <div className={styles.formInput}>
           <input
-              onChange={onChangeHandler}
+              onChange={handleInputChange}
               type="text"
-              className="form-control"
+              className={cn(styles.formControl, 'form-control')}
               name="description"
               value={formState.description}
               placeholder="Описание"
           />
         </div>
-        <div className="">
-          <button type="submit" className={btnSubmitClasses}>Добавить</button>
-        </div>
-        <div className="">
-          <button onClick={() => setIsAddingNote(false)} type="button" className={cancelBtnClasses}>Отмена</button>
-        </div>
+        <button
+            type="submit"
+            disabled={isDisabledSubmitBtn}
+            className={
+              cn(
+                  styles.btn,
+                  'btn',
+                  'btn-primary',
+                  { [styles.disabled]: isDisabledSubmitBtn }
+              )
+            }
+        >
+          Добавить
+        </button>
+        <button
+            onTouchStart={handleCloseForm}
+            onClick={handleCloseForm}
+            type="button"
+            className={cn(styles.btn, 'btn', 'btn-danger')}
+        >
+          Отмена
+        </button>
       </form>
   );
 };

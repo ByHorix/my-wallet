@@ -1,21 +1,19 @@
 import React from "react";
-import createClassNames from "../../createClassNames";
+import cn from "../../createClassNames";
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Tab.module.scss';
-import { AppRoutes } from '../../config';
 
 export const Tab = ({ route, name }) => {
   const location = useLocation();
-  const pathName = location.pathname === '/' ? AppRoutes.MY_WALLET : location.pathname;
+  const isTabActive = location.pathname === route;
   const activeClasses = `active ${styles.active}`;
 
-  const liClasses = createClassNames(styles['nav-item'], 'nav-item');
-  const linkClasses = createClassNames({ [activeClasses]: pathName === route }, styles['nav-link'], 'nav-link');
+  const liClasses = cn(styles.navItem, 'nav-item');
 
     return (
         <li className={liClasses}>
             <Link
-                className={linkClasses}
+                className={cn({ [activeClasses]: isTabActive }, styles.navLink, 'nav-link')}
                 to={route}
             >
                 {name}

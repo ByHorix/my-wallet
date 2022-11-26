@@ -1,18 +1,43 @@
-@import 'src/global/_variables';
-@import 'src/global/mixins/_breakpoint';
+@import "src/global/_variables";
 
-@include media-breakpoint-down(lg) {
-
+.menuHead {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: $disabled-color 1px solid;
+  .iconContainer {
+    padding: 15px 20px;
+    .icon {
+      width: 40px;
+    }
+  }
+  .balance {
+    font-weight: 600;
+    color: $disabled-color;
+    margin: 0;
+    padding: 1.5vw 5vw;
+    .balanceItem {
+      font-size: 18px;
+      text-align: right;
+      margin: 0;
+      padding: 0;
+    }
+  }
 }
 
-@include media-breakpoint-down(md) {
-
-}
-
-@include media-breakpoint-down(sm) {
-
-}
-
-@include media-breakpoint-down(xs) {
-
+.menuBody {
+  .menu {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    .menuItem {
+      font-size: 24px;
+      font-weight: 600;
+      color: $main-color;
+      padding: 2vw;
+      border-bottom: $disabled-color 1px solid;
+    }
+    .active {
+      background-color: #ffe693;
+    }
+  }
 }

@@ -8,6 +8,9 @@
   margin: 10px auto 0;
   padding-top: 2vw;
   border-radius: 20px 50px 0 0;
+  .burgerMenu {
+    display: none;
+  }
 }
 
 .nav {
@@ -16,7 +19,7 @@
   align-items: start;
   padding: 0 2vw;
 
-  .nav-tabs {
+  .navTabs {
     width: 60%;
     align-items: stretch;
     border-bottom: none;
@@ -29,14 +32,14 @@
     justify-content: right;
     font-weight: 600;
     color: $disabled-color;
-    .balance-item {
+    .balanceItem {
       text-align: right;
       padding: 0 2vw
     }
   }
 }
 
-.nav-tabs {
+.navTabs {
   border-top-left-radius: 25px;
   border-top-right-radius: 50px;
 }
@@ -45,11 +48,11 @@
 
 @include media-breakpoint-down(lg) {
   .header {
-    .nav-tabs {
-      max-width: 50%;
+    .navTabs {
+      width: 50%;
     }
     .balance {
-      width: auto;
+      width: 50%;
       padding: 5px 3vw 0;
     }
   }
@@ -68,7 +71,7 @@
       .balance {
         width: auto;
         padding: 5px 3vw;
-        .balance-item {
+        .balanceItem {
           padding: 0 1vw 0;
           font-size: 0.9em;
         }
@@ -82,12 +85,13 @@
     .nav {
       align-items: start;
       justify-content: space-between;
-      .nav-tabs {
-        width: 60%;
+      font-size: 0.7em;
+      .navTabs {
+        width: 70%;
       }
       .balance {
         margin-top: -7px;
-        font-size: 0.7em;
+        font-size: 0.6em;
         flex-direction: column-reverse;
         width: 30%;
       }
@@ -96,8 +100,17 @@
 }
 
 @include media-breakpoint-down(xs) {
-  .container {
+  .header {
+    border-radius: 0 0;
     width: 100%;
+    padding: 0;
+    margin: 0;
+    .burgerMenu {
+      display: block;
+    }
+    .nav {
+      display: none;
+    }
   }
 }
 

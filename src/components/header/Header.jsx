@@ -3,7 +3,8 @@ import { Tab } from '../tab/Tab';
 import { GlobalContext } from '../GlobalContext';
 import { HeaderItems } from '../../config';
 import styles from './Header.module.scss';
-import createClassNames from '../../createClassNames';
+import cn from '../../createClassNames';
+import { BurgerMenu } from '../burger-menu/BurgerMenu';
 
 
 // 'MyWallet',+
@@ -14,15 +15,15 @@ import createClassNames from '../../createClassNames';
 
 export const Header = () => {
   const { balanceState, amounts } = useContext(GlobalContext);
-  const navClasses = createClassNames(styles.nav, 'nav nav-fill');
-  const ulClasses = createClassNames(styles['nav-tabs'], 'nav nav-tabs');
-  const balanceClasses = createClassNames('nav-item', 'nav-link', styles.balance);
 
 
   return (
       <header className={styles.header}>
-        <nav className={navClasses}>
-          <ul className={ulClasses}>
+        <div className={styles.burgerMenu}>
+          <BurgerMenu/>
+        </div>
+        <nav className={cn(styles.nav, 'nav nav-fill')}>
+          <ul className={cn(styles.navTabs, 'nav nav-tabs')}>
             {HeaderItems.map(({ name, route }) => (
                 <Tab
                     key={name}
@@ -31,11 +32,11 @@ export const Header = () => {
                 />
             ))}
           </ul>
-          <div className={balanceClasses}>
-            <div className={styles['balance-item']}>
+          <div className={cn('nav-item', 'navLink', styles.balance)}>
+            <div className={styles.balanceItem}>
               {`Общий баланс: ${balanceState}`}
             </div>
-            <div className={styles['balance-item']}>
+            <div className={styles.balanceItem}>
               {`Накопления: ${amounts.accumulations}`}
             </div>
           </div>
