@@ -1,6 +1,6 @@
 import React, {useState, useContext} from "react";
 import {ArrearsInOut} from "./ArrearsInOut";
-import createClassNames from "../createClassNames";
+import createClassNames from "../utils/createClassNames";
 import {GlobalContext} from "./GlobalContext";
 
 export const ArrearsScreen = ({name}) => {

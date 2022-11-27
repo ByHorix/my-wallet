@@ -1,5 +1,5 @@
 import React from "react";
-import cn from "../../createClassNames";
+import cn from "../../utils/createClassNames";
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Tab.module.scss';
 

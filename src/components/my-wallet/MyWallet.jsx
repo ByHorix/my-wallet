@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../GlobalContext';
 import { useNavigate } from 'react-router-dom';
 import styles from './MyWallet.module.scss';
-import cn from '../../createClassNames';
+import cn from '../../utils/createClassNames';
 
 export const MyWallet = () => {
   const { amounts } = useContext(GlobalContext);

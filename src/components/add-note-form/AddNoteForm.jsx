@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
-import cn from '../../createClassNames';
-import validateValues from '../../validateValues';
+import cn from '../../utils/createClassNames';
+import validateValues from '../../utils/validateValues';
 import { GlobalContext } from '../GlobalContext';
 import { useLocation } from 'react-router-dom';
 import styles from './AddNoteForm.module.scss';
@@ -17,8 +17,6 @@ export const AddNoteForm = ({ name }) => {
   }, [location.pathname]);
 
   const {
-    amounts,
-    setAmounts,
     notesLists,
     setNotesLists,
   } = useContext(GlobalContext);
@@ -43,10 +41,10 @@ export const AddNoteForm = ({ name }) => {
 
       const newNoteItem = { id: newId, amount: formState.amount, description: formState.description, date };
       const newCurrentHistoryState = [newNoteItem, ...currentHistoryState];
-      const newCurrentAmount = newCurrentHistoryState.reduce((acc, { amount }) => acc + Number(amount), 0);
+      // const newCurrentAmount = newCurrentHistoryState.reduce((acc, { amount }) => acc + Number(amount), 0);
 
-      setNotesLists({ ...notesLists, [name]: newCurrentHistoryState });
-      setAmounts({ ...amounts, [name]: newCurrentAmount });
+      setNotesLists({ [name]: newCurrentHistoryState });
+      // setAmounts({ ...amounts, [name]: newCurrentAmount });
       setFormState({ amount: '', description: '' });
       setIsAddingNote(false);
     }

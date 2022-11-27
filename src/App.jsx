@@ -5,7 +5,7 @@ import { GlobalContextProvider } from './components/GlobalContextProvider';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { MainLayout } from './components/MainLayout';
-import { AppRoutes } from './config';
+import { AppRoutes } from './utils/config';
 import './global/index.scss'
 
 const App = () => (

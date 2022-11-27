@@ -1,0 +1,1 @@
+export const getSumFromNotesList = (notesList) => notesList.reduce((acc, {amount}) => acc + Number(amount), 0);
