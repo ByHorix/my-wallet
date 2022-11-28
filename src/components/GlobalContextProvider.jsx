@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { GlobalContext } from './GlobalContext';
 import * as LS from '../utils/localStorage';
 import { getSumFromNotesList } from '../utils/getSumFromNotesList';
-import { getItem } from '../utils/localStorage';
 import { calculateInitialAmounts } from '../utils/calculateInitialAmounts';
 
 const INITIAL_NOTES_LISTS = {
@@ -34,26 +33,24 @@ export const GlobalContextProvider = ({ children }) => {
     setAmounts(data ? calculateInitialAmounts(INITIAL_AMOUNTS, data) : INITIAL_AMOUNTS);
   }, []);
 
-  const handleAddNote = (notesList) => {
-    const [ currentKey ] = Object.keys(notesList);
-
+  const handleAddNote = (noteType, noteItem) => {
     setAmounts((prevState) => ({
       ...prevState,
-      [currentKey]: getSumFromNotesList(notesList[currentKey])
+      [noteType]: getSumFromNotesList([noteItem, ...notesLists[noteType]]),
     }));
 
     setNotesLists((prevState) => ({
       ...prevState,
-      ...notesList
+      [noteType]: [noteItem, ...prevState[noteType]],
     }));
-    LS.setItem('notesList', { ...notesLists, ...notesList });
+
+    LS.setItem('notesList', { ...notesLists, [noteType]: [noteItem, ...notesLists[noteType]]});
   };
 
   const contextValue = {
     amounts,
-    setAmounts,
     notesLists,
-    setNotesLists: handleAddNote,
+    handleAddNote,
     balanceState,
   };
 

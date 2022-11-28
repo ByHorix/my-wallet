@@ -14,11 +14,23 @@
   }
 
   .listGroupItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     .amount {
+      box-sizing: border-box;
+      padding-left: 10px;
+      border-left: 1px solid;
       width: 25%;
     }
     .description {
+      box-sizing: border-box;
+      padding-left: 10px;
       width: 50%;
+      max-width: 40%;
+      max-height: 100px;
+      overflow: auto;
+      border-left: 1px solid;
     }
     .date {
       width: 25%;

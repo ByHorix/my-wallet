@@ -19,10 +19,10 @@ export const NotesScreen = ({ name }) => {
         {notesLists[name].map(({ id, amount, description, date }) => (
             <li
                 key={id}
-                className={cn(styles.listGroupItem, 'list-group-item', 'd-flex', 'justify-content-between')}
+                className={cn(styles.listGroupItem, 'list-group-item')}
             >
-              <div className={styles.amount}>| {amount}</div>
-              <div className={styles.description}>| {description}</div>
+              <div className={styles.amount}>{amount}</div>
+              <div className={styles.description}>{description}</div>
               <div className={styles.date}>{date}</div>
             </li>
         ))}
@@ -34,7 +34,7 @@ export const NotesScreen = ({ name }) => {
           <h4 className={styles.total}>
             В общем и целом: {currentState}
           </h4>
-          <AddNoteForm name={name}/>
+          <AddNoteForm noteType={name}/>
         </div>
         <hr/>
         {notesList}
