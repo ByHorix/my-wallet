@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Tab } from '../tab/Tab';
 import { GlobalContext } from '../GlobalContext';
-import { HeaderItems } from '../../config';
+import { HeaderItems } from '../../utils/config';
 import styles from './Header.module.scss';
-import cn from '../../createClassNames';
+import cn from '../../utils/createClassNames';
 import { BurgerMenu } from '../burger-menu/BurgerMenu';
 
 

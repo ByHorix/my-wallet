@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import {AddNoteForm} from "./add-note-form/AddNoteForm";
-import createClassNames from "../createClassNames";
+import createClassNames from "../utils/createClassNames";
 import {GlobalContext} from "./GlobalContext";
 
 

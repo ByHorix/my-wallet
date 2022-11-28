@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AddNoteForm } from '../add-note-form/AddNoteForm';
 import { GlobalContext } from '../GlobalContext';
 import styles from './NotesScreen.module.scss';
-import cn from '../../createClassNames';
+import cn from '../../utils/createClassNames';
 
 export const NotesScreen = ({ name }) => {
 
