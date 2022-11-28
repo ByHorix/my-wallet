@@ -14,9 +14,6 @@ export const MyWallet = () => {
     accumulations
   } = amounts;
 
-  // const liClasses = cn(styles.listGroupItem, 'list-group-item', 'd-flex', 'justify-content-left', 'align-items-center');
-  // const liNameClasses = cn(styles.listGroupItemName, 'list-group-item-name');
-  // const amountClasses = cn(styles.badge, 'badge', 'rounded-pill');
   const btnClasses = cn(styles.btn, 'btn', 'btn-outline-warning');
 
   return (<div className={styles.container}>

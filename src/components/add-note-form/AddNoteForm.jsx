@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import styles from './AddNoteForm.module.scss';
 import { v1 } from 'uuid';
 
-export const AddNoteForm = ({ name }) => {
+export const AddNoteForm = ({ noteType }) => {
   const [isAddingNote, setIsAddingNote] = useState(false);
   const location = useLocation();
 
@@ -17,16 +17,13 @@ export const AddNoteForm = ({ name }) => {
   }, [location.pathname]);
 
   const {
-    notesLists,
-    setNotesLists,
+    handleAddNote,
   } = useContext(GlobalContext);
 
   const [formState, setFormState] = useState({ amount: '', description: '' });
   const isDisabledSubmitBtn = formState.amount === '' || formState.description === '';
 
-  const handleInputChange = (e) => {
-    e.preventDefault();
-    const { target: { value, name } } = e;
+  const handleInputChange = ( { target: { value, name } } ) => {
     setFormState({ ...formState, [name]: value });
   };
 
@@ -35,16 +32,11 @@ export const AddNoteForm = ({ name }) => {
     const isValid = validateValues(formState.amount !== '', formState.description !== '');
 
     if (isValid) {
-      const currentHistoryState = notesLists[name];
       const date = `${(new Date()).toLocaleDateString('ru-RU')} | ${(new Date()).toLocaleTimeString('ru-RU')}`;
-      const newId = v1();
 
-      const newNoteItem = { id: newId, amount: formState.amount, description: formState.description, date };
-      const newCurrentHistoryState = [newNoteItem, ...currentHistoryState];
-      // const newCurrentAmount = newCurrentHistoryState.reduce((acc, { amount }) => acc + Number(amount), 0);
+      const noteItem = { id: v1(), amount: formState.amount, description: formState.description, date };
 
-      setNotesLists({ [name]: newCurrentHistoryState });
-      // setAmounts({ ...amounts, [name]: newCurrentAmount });
+      handleAddNote(noteType, noteItem );
       setFormState({ amount: '', description: '' });
       setIsAddingNote(false);
     }
