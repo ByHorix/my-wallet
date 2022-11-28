@@ -49,7 +49,6 @@ export const GlobalContextProvider = ({ children }) => {
 
   const contextValue = {
     amounts,
-    setAmounts,
     notesLists,
     handleAddNote,
     balanceState,
