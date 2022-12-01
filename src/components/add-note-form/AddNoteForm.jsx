@@ -2,20 +2,10 @@ import React, { useState, useContext, useEffect } from 'react';
 import cn from '../../utils/createClassNames';
 import validateValues from '../../utils/validateValues';
 import { GlobalContext } from '../GlobalContext';
-import { useLocation } from 'react-router-dom';
 import styles from './AddNoteForm.module.scss';
 import { v1 } from 'uuid';
 
-export const AddNoteForm = ({ noteType }) => {
-  const [isAddingNote, setIsAddingNote] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    if (isAddingNote) {
-      setIsAddingNote(false);
-    }
-  }, [location.pathname]);
-
+export const AddNoteForm = ({ noteType, handleCloseForm }) => {
   const {
     handleAddNote,
   } = useContext(GlobalContext);
@@ -38,73 +28,67 @@ export const AddNoteForm = ({ noteType }) => {
 
       handleAddNote(noteType, noteItem );
       setFormState({ amount: '', description: '' });
-      setIsAddingNote(false);
+      handleCloseForm();
     }
   };
 
-  const handleCloseForm = () => {
-    setIsAddingNote(false);
-  };
-
-  if (!isAddingNote) {
-    return (
-        <div className={cn(styles.formContainer, 'd-flex')}>
-          <button
-              onClick={() => setIsAddingNote(true)}
-              onTouchStart={() => setIsAddingNote(true)}
-              type="button"
-              className={cn(styles.btn, 'btn', 'btn-primary')}
-          >
-            Добавить запись
-          </button>
-        </div>
-    );
-  }
-
   return (
-      <form onSubmit={handleSubmit} className={cn(styles.formContainer, 'd-flex')}>
-        <div className={styles.formInput}>
-          <input
+      <div
+          className={styles.modalWindow}
+          onClick={handleCloseForm}
+          // onTouchStart={closeForm}
+      >
+        <form
+            onSubmit={handleSubmit}
+            className={styles.formContainer}
+            onClick={(e) => e.stopPropagation()}
+            // onTouchStart={(e) => e.stopPropagation()}
+        >
+          <div className={styles.formInput}>
+            <input
+                onChange={handleInputChange}
+                type="number"
+                className={cn(styles.formControl, 'form-control')}
+                name="amount"
+                value={formState.amount}
+                placeholder="Сумма"
+            />
+          </div>
+          <div className={styles.formInput}>
+          <textarea
               onChange={handleInputChange}
-              type="number"
-              className={cn(styles.formControl, 'form-control')}
-              name="amount"
-              value={formState.amount}
-              placeholder="Сумма"
-          />
-        </div>
-        <div className={styles.formInput}>
-          <input
-              onChange={handleInputChange}
-              type="text"
-              className={cn(styles.formControl, 'form-control')}
+              className={cn(styles.formControl, styles.textarea, 'form-control')}
               name="description"
               value={formState.description}
               placeholder="Описание"
+              rows="3"
           />
-        </div>
-        <button
-            type="submit"
-            disabled={isDisabledSubmitBtn}
-            className={
-              cn(
-                  styles.btn,
-                  'btn',
-                  'btn-primary',
-                  { [styles.disabled]: isDisabledSubmitBtn }
-              )
-            }
-        >
-          Добавить
-        </button>
-        <button
-            onTouchStart={handleCloseForm}
-            onClick={handleCloseForm}
-            type="button"
-            className={cn(styles.btn, 'btn', 'btn-danger')}
-        >
-          Отмена
-        </button>
-      </form>
+          </div>
+          <div className={styles.buttonsContainer}>
+            <button
+                type="submit"
+                disabled={isDisabledSubmitBtn}
+                className={
+                  cn(
+                      styles.btn,
+                      'btn',
+                      'btn-primary',
+                      { [styles.disabled]: isDisabledSubmitBtn }
+                  )
+                }
+            >
+              Добавить
+            </button>
+            <button
+                // onTouchStart={closeForm}
+                onClick={handleCloseForm}
+                type="button"
+                className={cn(styles.btn, 'btn', 'btn-danger')}
+            >
+              Отмена
+            </button>
+          </div>
+        </form>
+      </div>
   );
 };
