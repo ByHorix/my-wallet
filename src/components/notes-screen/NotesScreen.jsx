@@ -1,17 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AddNoteForm } from '../add-note-form/AddNoteForm';
 import { GlobalContext } from '../GlobalContext';
 import styles from './NotesScreen.module.scss';
 import cn from '../../utils/createClassNames';
+import { useLocation } from 'react-router-dom';
 
 export const NotesScreen = ({ name }) => {
+  const [isShowAddNoteForm, setIsShowAddNoteForm] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (isShowAddNoteForm) {
+      setIsShowAddNoteForm(false);
+    }
+  }, [location.pathname]);
+
+  const handleCloseForm = () => {
+    setIsShowAddNoteForm(false);
+  };
 
   const {
     amounts,
     notesLists,
   } = useContext(GlobalContext);
 
-  const currentState = amounts[name];
+  const currentAmount = amounts[name];
 
   const notesList = notesLists[name].length === 0
       ? <div className={styles.withoutNotes}>Записей пока что нет...</div>
@@ -30,11 +43,19 @@ export const NotesScreen = ({ name }) => {
 
   return (
       <div className={cn(styles.container, 'border', 'border-1', 'rounded-bottom')}>
+        { isShowAddNoteForm && <AddNoteForm noteType={name} handleCloseForm={handleCloseForm}/>}
         <div className={cn(styles.screenTitle, 'd-flex', 'justify-content-between')}>
           <h4 className={styles.total}>
-            В общем и целом: {currentState}
+            В общем и целом: {currentAmount}
           </h4>
-          <AddNoteForm noteType={name}/>
+          <button
+              onClick={() => setIsShowAddNoteForm(true)}
+              // onTouchStart={() => setIsShowAddNoteForm(true)}
+              type="button"
+              className={cn(styles.btn, 'btn', 'btn-primary')}
+          >
+            Добавить запись
+          </button>
         </div>
         <hr/>
         {notesList}

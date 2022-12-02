@@ -1,82 +1,139 @@
 @import "src/global/_variables";
 @import "src/global/mixins/_breakpoint";
 
-.formContainer {
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: right;
+.modalWindow {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $modal-bg-color;
 
-  .formInput {
-    margin: 0 0.5vw;
+  .formContainer {
+    position: relative;
+    z-index: 2;
+    width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    margin: 50px auto;
+
+    border: 1px solid;
+    border-radius: 10px;
+
+
+    .formInput {
+      margin: 0.5vw 0;
+
+      .textarea {
+        resize: none;
+      }
+    }
+
+    .buttonsContainer {
+      display: flex;
+      justify-content: space-between;
+
+      .btn {
+        margin: 0.5vw 0;
+        width: 47%;
+      }
+
+      .disabled {
+        font-weight: 400;
+      }
+    }
   }
 
-  .btn {
-    margin: 0 0.5vw;
-  }
-
-  .disabled {
-    font-weight: 400;
-    margin: 0 0.5vw;
-  }
 }
 
 
 //responsive
 
 @include media-breakpoint-down(lg) {
-  .formContainer {
-    .formInput, .btn {
-      font-size: 0.95em;
+  .modalWindow {
+    .formContainer {
+      .formInput {
+        font-size: 0.95em;
+      }
+
+      .buttonsContainer {
+        .btn {
+          font-size: 0.95em;
+        }
+      }
     }
-    width: 50%
   }
 }
 
 @include media-breakpoint-down(md) {
-  .formContainer {
-    .formInput, .btn {
-      font-size: 0.9em;
+  .modalWindow {
+    .formContainer {
+      width: 300px;
+
+      .formInput {
+        font-size: 0.9em;
+      }
+
+      .buttonsContainer {
+        .btn {
+          font-size: 0.9em;
+        }
+      }
     }
   }
 }
 
 @include media-breakpoint-down(sm) {
-  .formContainer {
-    .formInput, .btn {
-      font-size: 0.7em;
-    }
-    .btn {
-      padding: 1vw;
-    }
-    .formControl {
-      font-size: 1em;
-      padding: 1.1vw 0.5vw;
+  .modalWindow {
+    .formContainer {
+      width: 300px;
+
+      .formInput {
+        font-size: 0.7em;
+      }
+
+      .buttonsContainer {
+        .btn {
+          padding: 1vw;
+          font-size: 0.7em;
+        }
+      }
+
+      .formControl {
+        font-size: 1em;
+        padding: 1.1vw 0.5vw;
+      }
     }
   }
 }
 
 @include media-breakpoint-down(xs) {
-  .formContainer {
-    margin-top: 4vw;
-    width: 80vw;
-    flex-direction: column;
-    align-items: center;
+  .modalWindow {
+    .formContainer {
+      margin-top: 4vw;
+      flex-direction: column;
+      align-items: center;
 
-    .formInput {
-      width: 100%;
-      margin-top: 10px;
+      .formInput {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+    .buttonsContainer {
+      display: block;
+      .btn {
+        width: 100%;
+        font-size: 1em;
+        padding: 5px;
+        margin-top: 10px;
+      }
     }
 
-    .btn {
-      width: 100%;
-      font-size: 1em;
-      padding: 5px;
-      margin-top: 10px;
-    }
-    .formControl {
-      font-size: 1.5em;
-      padding: 5px;
+      .formControl {
+        font-size: 1.5em;
+        padding: 5px;
+      }
     }
   }
 }
