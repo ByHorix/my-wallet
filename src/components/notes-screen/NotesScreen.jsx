@@ -29,6 +29,13 @@ export const NotesScreen = ({ name }) => {
   const notesList = notesLists[name].length === 0
       ? <div className={styles.withoutNotes}>Записей пока что нет...</div>
       : <ul className="list-group list-group-flush">
+          {/*<li*/}
+          {/*    className={cn(styles.listTitle, styles.listGroupItem, 'list-group-item')}*/}
+          {/*>*/}
+          {/*  <div className={styles.amount}>{'Сумма'}</div>*/}
+          {/*  <div className={styles.description}>{"Описание"}</div>*/}
+          {/*  <div className={styles.date}>{"Дата добавления"}</div>*/}
+          {/*</li>*/}
         {notesLists[name].map(({ id, amount, description, date }) => (
             <li
                 key={id}
@@ -43,7 +50,7 @@ export const NotesScreen = ({ name }) => {
 
   return (
       <div className={cn(styles.container, 'border', 'border-1', 'rounded-bottom')}>
-        { isShowAddNoteForm && <AddNoteForm noteType={name} handleCloseForm={handleCloseForm}/>}
+        {isShowAddNoteForm && <AddNoteForm noteType={name} handleCloseForm={handleCloseForm}/>}
         <div className={cn(styles.screenTitle, 'd-flex', 'justify-content-between')}>
           <h4 className={styles.total}>
             В общем и целом: {currentAmount}
