@@ -16,7 +16,6 @@ import { BurgerMenu } from '../burger-menu/BurgerMenu';
 export const Header = () => {
   const { balanceState, amounts } = useContext(GlobalContext);
 
-
   return (
       <header className={styles.header}>
         <div className={styles.burgerMenu}>

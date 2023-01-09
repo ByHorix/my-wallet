@@ -4,6 +4,8 @@ import validateValues from '../../utils/validateValues';
 import { GlobalContext } from '../GlobalContext';
 import styles from './AddNoteForm.module.scss';
 import { v1 } from 'uuid';
+import { NumericFormat } from 'react-number-format';
+import { removeSpaces } from '../../utils/removeSpaces';
 
 export const AddNoteForm = ({ noteType, handleCloseForm }) => {
   const {
@@ -24,7 +26,7 @@ export const AddNoteForm = ({ noteType, handleCloseForm }) => {
     if (isValid) {
       const date = `${(new Date()).toLocaleDateString('ru-RU')} | ${(new Date()).toLocaleTimeString('ru-RU')}`;
 
-      const noteItem = { id: v1(), amount: formState.amount, description: formState.description, date };
+      const noteItem = { id: v1(), amount: removeSpaces(formState.amount), description: formState.description, date };
 
       handleAddNote(noteType, noteItem );
       setFormState({ amount: '', description: '' });
@@ -45,13 +47,16 @@ export const AddNoteForm = ({ noteType, handleCloseForm }) => {
             // onTouchStart={(e) => e.stopPropagation()}
         >
           <div className={styles.formInput}>
-            <input
-                onChange={handleInputChange}
-                type="number"
-                className={cn(styles.formControl, 'form-control')}
+            <NumericFormat
+                // type="number"
                 name="amount"
-                value={formState.amount}
                 placeholder="Сумма"
+                onChange={handleInputChange}
+                className={cn(styles.formControl, 'form-control')}
+                value={formState.amount}
+                allowNegative={false}
+                thousandSeparator=" "
+                decimalScale={2}
             />
           </div>
           <div className={styles.formInput}>
